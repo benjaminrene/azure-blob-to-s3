@@ -27,16 +27,18 @@ function copy (options) {
     region: options.aws.region,
     accessKeyId: options.aws.accessKeyId,
     secretAccessKey: options.aws.secretAccessKey,
+    useAccelerateEndpoint: true,
     params: {
-      Bucket: options.aws.bucket
+      Bucket: options.aws.bucket,
     }
   })
 
   const ThrottledTransfer = Throttled.create(transfer, undefined, {
     queriesPerSecond: options.concurrency
   })
+  log.azure.debug({"message": "options", options})
 
-  return BlobList(blob, options.azure.container, options.azure.token)
+  return BlobList(blob, options.azure.container, options.azure.prefix, options.azure.token)
     .on('page', (page) => log.azure.info({ message: 'page', page }))
     .pipe(through.obj(function (file, enc, callback) {
       log.azure.debug({ message: 'file', file })

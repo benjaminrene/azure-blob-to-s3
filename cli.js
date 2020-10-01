@@ -16,6 +16,7 @@ const cli = meow(`
     --concurrency
     --azure-connection       Azure Blob Storage connection string
     --azure-container        Azure Blob Storage container name
+    --azure-prefix           Azure Blob Storage blob prefix
     --aws-bucket             AWS S3 bucket name
     --aws-region             AWS region for the bucket
     --aws-access-key-id      AWS IAM access key ID
@@ -28,7 +29,8 @@ const options = {
   azure: {
     connection: cli.flags.azureConnection,
     container: cli.flags.azureContainer,
-    token: cli.flags.azureToken
+    token: cli.flags.azureToken,
+    prefix: cli.flags.azurePrefix
   },
   aws: {
     bucket: cli.flags.awsBucket,

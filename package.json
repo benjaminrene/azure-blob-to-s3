@@ -2,7 +2,8 @@
   "name": "azure-blob-to-s3",
   "main": "index.js",
   "bin": {
-    "azure-s3": "./cli.js"
+    "azure-s3": "./cli.js",
+    "trajet-copy": "./daemon.js"
   },
   "version": "1.1.7",
   "description": "Batch copy files from Azure Blob Storage to Amazon S3",
@@ -39,8 +40,10 @@
   ],
   "dependencies": {
     "aws-sdk": "^2.355.0",
-    "azure-blob-list-stream": "~1.2.0",
+    "azure-blob-list-stream": "git+https://github.com:benjaminrene/azure-blob-list-stream.git",
     "azure-storage": "~2.10.2",
+    "moment": "~2.29.0",
+    "moment-range": "~4.0.2",
     "bole": "~4.0.0",
     "meow": "~7.1.0",
     "ora": "~5.1.0",
