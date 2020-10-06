@@ -106,7 +106,7 @@ const start = moment(options.beginDate, 'YYYY-MM-DD');
 const end   = options.endDate ? moment(options.endDate, 'YYYY-MM-DD') : moment();
 const range = moment.range(start, end);
 
-toS3.log.s3.info({ message: 'dates', begin: start, end: end })
+toS3.log.s3.info({ message: 'config', options })
 
 const dates = Array.from(range.by('days')).map(d => d.format('YYYYMMDD'))
 
